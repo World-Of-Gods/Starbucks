@@ -2,19 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" href="./logo.png" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Starbucks</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="circle"></div>
-    <section>
+    <div class="circle circle2"></div>
+    <div class="circle3 circle4"></div>
+ 
       
+    <section>
+      <div class="wipe"></div>
+      <img src="logo.png" class="logo1" alt="logo"
+        />
       <header>
-        <a href="#" class="logo"
-          ><img src="logo.png" class="logo" alt="logo"
-        /></a>
+        <a href="#"><img src="logo.png" class="logo" alt="logo"
+          /></a>
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#">Menu</a></li>
@@ -117,13 +122,25 @@
       </div>
       <!-- </div> -->
     </section>
+    <script src="./js/script.js"></script>
     <script type="text/javascript">
       function imgSlider(anything) {
-        document.querySelector(".starbucks").src = anything;
+        var buck = document.querySelector(".starbucks");
+        
+// buck.style.opacity =0;
+buck.style.opacity =0;
+setTimeout(()=>{
+  buck.src = anything;
+  buck.style.opacity =1;
+},200);
+     
+
       }
       function changeColor(color) {
         const circle = document.querySelector(".circle");
+        const circle3 = document.querySelector(".circle3");
         circle.style.background = color;
+        circle3.style.background = color;
       }
 
       function changeColors(colors) {
@@ -142,5 +159,6 @@
         header.classList.toggle("sticky", window.scrollY > 0);
       });
     </script>
+  
   </body>
 </html>

@@ -5,11 +5,34 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-body {
-  align-items: center;
-  background: #fff;
-  min-height: 300vh;
+body::-webkit-scrollbar {
+  width: 10px;
+  display:none;
+ 
+} 
+html {
+  --scrollbarBG: hsl(0, 0%, 100%);
+  --thumbBG: #017143;
+  overflow-x: hidden;
+  height: 100vh;
+  visibility: auto;
+scroll-behavior: smooth;
+scroll-snap-type: mandatory;
+
 }
+body {
+  
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG); 
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 10px;
+  border: 3px solid var(--scrollbarBG);
+}
+
 /* 
 .contentcard {
   float: left;
@@ -22,7 +45,10 @@ body {
   right: 0;
   left: 0;
 } */
-
+.main {
+  transition-duration: 2s;
+  opacity: 0;
+}
 .contentcard {
   position: relative;
   width: 100%;
@@ -95,28 +121,55 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  opacity: 0;
   width: 100%;
   padding: 40px 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: 0.6s;
+  transition: 1s;
+  filter:blur(20px);
   z-index: 100000;
 }
 header.sticky {
   padding: 5px 100px;
   background: #111;
 }
-header .logo {
+.logo {
   position: relative;
   max-width: 80px;
   transition: 0.6s;
 }
+.logo1 {
+  position: absolute;
+  max-width: 80px;
+  transition-duration: 1s;
+ opacity: 0;
+ filter: blur(20px);
+  transform: translate(-50%,-50%);
+  z-index: 25;
+
+}
+/* .wipe {
+  position: absolute;
+  max-width: 80px;
+  transition-duration: 2s;
+  height:80px;
+  width:80px;
+  background:#017143;
+  transform: translate(-50%,-50%);
+  z-index: 26;
+  top: 50%;
+left: 50%;
+} */
 ul {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  filter:blur(20px);
+  transition-duration: 1s;
 }
 ul li {
   position: relative;
@@ -149,6 +202,10 @@ ul li a {
 .textBox {
   position: relative;
   max-width: 600px;
+  transition-duration: 0.5s;
+transition-timing-function: ease-in;
+  opacity: 0;
+  transform: translateX(-20px);
 }
 .textBox h2 {
   color: #333;
@@ -181,6 +238,7 @@ ul li a {
   justify-content: flex-end;
   padding-right: 50px;
   margin-top: 50px;
+  
 }
 .imgBox img {
   max-width: 340px;
@@ -232,37 +290,51 @@ ul li a {
   width: 100%;
   height: 100%;
   background: #017143;
-  clip-path: circle(600px at right 800px);
-  animation: intro 2s ease-in-out 1;
+  transition-duration: 1.5s;
+  clip-path: circle(400px at left 800px);
+  animation: intro 1s ease-in-out 1;
+  z-index: 1;
+  height:150vh;
+}
+.circle3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #017143;
+  transition-duration: 1.5s;
+  clip-path: circle(400px at right 150px);
+  animation: intro 1s ease-in-out 1;
   z-index: 1;
   height:150vh;
 }
 @keyframes intro {
   from {
-    clip-path: circle(2500px at right 800px);
-    filter:hue-rotate(360deg)
+    
+    opacity: 0;
+   
       
        
    }
    to {
-    clip-path: circle(600px at right 800px);
-    filter:hue-rotate(0deg)
+
+    opacity: 1;
    }
    
  }
 header.sticky ul li a {
   color: #fff;
 }
-header.sticky .logo {
-  position: relative;
-}
+
 .starbucks {
   filter: drop-shadow(0px 0px 30px rgba(255, 223, 42, 0.9));
-  transition-duration: 2s;
+  transition-duration: 0.5s;
   transform: translateY(1px);
-  animation-delay: 3s;
+  /* animation-delay: 3s; */
   animation: float 3s ease-in-out infinite;
   z-index: 2;
+  opacity: 0;
 
 }
 @keyframes float {
